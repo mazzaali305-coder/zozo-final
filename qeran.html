@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة قران — ربط الأفكار بالمستثمرين</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#C9A84C;--gold-light:#E8C96A;--gold-dim:rgba(201,168,76,0.15);--blue:#0A1628;--blue2:#0D1F3C;--blue3:#122547;--dark:#080808;--dark2:#111111;--dark3:#1A1A1A;--white:#F5F0E8;--white-dim:rgba(245,240,232,0.6);--white-faint:rgba(245,240,232,0.08);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--dark);color:var(--white);font-family:'Cairo',sans-serif;overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,8,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.1);}
+  .logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);text-decoration:none;}
+  .nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+  .nav-links a{color:rgba(245,240,232,0.6);text-decoration:none;font-size:0.88rem;transition:color 0.3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{border:1px solid var(--gold);color:var(--gold)!important;padding:7px 18px;}
+
+  /* HERO — QERAN SPECIAL */
+  .qeran-hero{min-height:100vh;background:linear-gradient(160deg,var(--blue) 0%,var(--dark) 60%);display:flex;align-items:center;padding:120px 5% 80px;position:relative;overflow:hidden;}
+  .qeran-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 85% 30%,rgba(201,168,76,0.08),transparent);}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:80px 80px;}
+
+  .qeran-logo-big{position:absolute;left:5%;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:22vw;color:rgba(201,168,76,0.04);font-style:italic;pointer-events:none;}
+
+  .hero-content{position:relative;z-index:2;max-width:680px;}
+  .qeran-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(10,22,40,0.8);border:1px solid rgba(201,168,76,0.3);padding:8px 20px;margin-bottom:28px;animation:fadeUp 0.8s ease both;}
+  .badge-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+  .qeran-badge span{color:var(--gold);font-size:0.78rem;letter-spacing:3px;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+  .qeran-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);line-height:1.1;margin-bottom:20px;animation:fadeUp 0.8s 0.1s ease both;}
+  .qeran-hero h1 em{font-style:italic;color:var(--gold);}
+  .hero-tagline{font-size:clamp(1rem,2vw,1.3rem);color:var(--white-dim);font-weight:300;margin-bottom:28px;letter-spacing:1px;animation:fadeUp 0.8s 0.2s ease both;}
+  .hero-p{color:rgba(245,240,232,0.45);line-height:1.8;max-width:500px;margin-bottom:40px;animation:fadeUp 0.8s 0.3s ease both;}
+
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp 0.8s 0.4s ease both;}
+  .btn-investor{background:var(--gold);color:var(--dark);padding:14px 32px;font-family:'Cairo',sans-serif;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-size:0.95rem;transition:all 0.3s;}
+  .btn-investor:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.3);}
+  .btn-founder{background:transparent;color:var(--white);padding:14px 32px;font-family:'Cairo',sans-serif;font-weight:400;text-decoration:none;border:1px solid rgba(245,240,232,0.2);font-size:0.95rem;transition:all 0.3s;}
+  .btn-founder:hover{border-color:var(--gold);color:var(--gold);}
+
+  .hero-stats{position:absolute;bottom:60px;left:5%;display:flex;gap:56px;animation:fadeUp 0.8s 0.5s ease both;}
+  .stat{text-align:center;}
+  .stat-n{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);display:block;}
+  .stat-l{font-size:0.7rem;color:var(--white-dim);letter-spacing:2px;text-transform:uppercase;}
+
+  /* SECTION */
+  section{padding:90px 5%;}
+  .section-tag{display:inline-block;color:var(--gold);font-size:0.73rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;padding-right:36px;position:relative;}
+  .section-tag::after{content:'';position:absolute;right:0;top:50%;width:24px;height:1px;background:var(--gold);}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.2;margin-bottom:14px;}
+  .section-title em{font-style:italic;color:var(--gold);}
+
+  /* PROBLEM / SOLUTION */
+  .prob-sol{background:var(--blue2);}
+  .prob-sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:52px;}
+  .prob-card{padding:48px;position:relative;}
+  .prob-card.problem{background:rgba(255,60,60,0.05);border:1px solid rgba(255,60,60,0.1);}
+  .prob-card.solution{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);}
+  .card-label{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;display:block;}
+  .problem .card-label{color:#FF6B6B;}
+  .solution .card-label{color:var(--gold);}
+  .prob-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:16px;}
+  .prob-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .prob-list li{color:var(--white-dim);font-size:0.88rem;padding-right:20px;position:relative;line-height:1.6;}
+  .problem .prob-list li::before{content:'✗';position:absolute;right:0;color:#FF6B6B;}
+  .solution .prob-list li::before{content:'✓';position:absolute;right:0;color:var(--gold);}
+
+  /* HOW IT WORKS */
+  .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:52px;align-items:start;}
+  .how-side h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:28px;color:var(--gold);}
+  .how-steps{display:flex;flex-direction:column;gap:20px;}
+  .how-step{display:flex;gap:20px;align-items:flex-start;}
+  .how-step-num{width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Playfair Display',serif;font-size:1rem;flex-shrink:0;}
+  .how-step-text h4{font-size:0.9rem;font-weight:700;margin-bottom:4px;}
+  .how-step-text p{color:var(--white-dim);font-size:0.8rem;line-height:1.6;}
+
+  /* FEATURES */
+  .features{background:var(--blue);}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+  .feature-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.1);padding:36px 28px;transition:all 0.4s;}
+  .feature-card:hover{background:rgba(201,168,76,0.05);border-color:rgba(201,168,76,0.25);transform:translateY(-4px);}
+  .feature-icon{font-size:2rem;margin-bottom:16px;display:block;}
+  .feature-card h3{font-size:1rem;font-weight:700;margin-bottom:10px;}
+  .feature-card p{color:var(--white-dim);font-size:0.82rem;line-height:1.7;}
+
+  /* WAITLIST */
+  .waitlist{background:linear-gradient(135deg,var(--blue2),var(--dark));text-align:center;padding:100px 5%;}
+  .waitlist-box{max-width:560px;margin:0 auto;}
+  .waitlist h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;}
+  .waitlist h2 em{font-style:italic;color:var(--gold);}
+  .waitlist p{color:var(--white-dim);line-height:1.8;margin-bottom:36px;}
+  .waitlist-form{display:flex;flex-direction:column;gap:14px;text-align:right;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .form-input{background:rgba(255,255,255,0.05);border:1px solid rgba(245,240,232,0.12);color:var(--white);padding:14px 18px;font-family:'Cairo',sans-serif;font-size:0.9rem;outline:none;transition:border 0.3s;width:100%;}
+  .form-input:focus{border-color:var(--gold);}
+  .form-input::placeholder{color:rgba(245,240,232,0.3);}
+  .form-select{background:var(--dark3);border:1px solid rgba(245,240,232,0.12);color:var(--white);padding:14px 18px;font-family:'Cairo',sans-serif;font-size:0.9rem;width:100%;outline:none;cursor:pointer;}
+  .btn-waitlist{background:var(--gold);color:var(--dark);padding:16px;font-family:'Cairo',sans-serif;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.3s;width:100%;}
+  .btn-waitlist:hover{background:var(--gold-light);transform:translateY(-2px);}
+  .form-note{color:rgba(245,240,232,0.3);font-size:0.75rem;text-align:center;}
+
+  footer{background:var(--dark);border-top:1px solid rgba(201,168,76,0.1);padding:32px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer p{color:rgba(245,240,232,0.3);font-size:0.78rem;}
+  footer a{color:var(--gold);text-decoration:none;font-size:0.82rem;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:768px){
+    .prob-sol-grid{grid-template-columns:1fr;}
+    .how-grid{grid-template-columns:1fr;}
+    .features-grid{grid-template-columns:1fr 1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .hero-stats{position:static;margin-top:48px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Zozo Studio</a>
+  <ul class="nav-links">
+    <li><a href="agency.html">وكالة التسويق</a></li>
+    <li><a href="prints.html">المطبوعات</a></li>
+    <li><a href="qeran.html" class="active">قران</a></li>
+    <li><a href="#waitlist" class="nav-cta">سجل الآن</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="qeran-hero">
+  <div class="hero-grid"></div>
+  <div class="qeran-logo-big">Q</div>
+
+  <div class="hero-content">
+    <div class="qeran-badge">
+      <span class="badge-dot"></span>
+      <span>قيد الإطلاق — سجل في قائمة الانتظار</span>
+    </div>
+    <h1>حيث تلتقي<br><em>الأفكار</em><br>بالمال</h1>
+    <p class="hero-tagline">منصة الوساطة الذكية بين الأفكار والاستثمار</p>
+    <p class="hero-p">
+      قران تربط أصحاب الأفكار والمشاريع الواعدة بالمستثمرين الباحثين عن فرص حقيقية —
+      في بيئة آمنة وموثوقة مع عقود رقمية محكمة وضمانات قانونية.
+    </p>
+    <div class="hero-btns">
+      <a href="#waitlist" class="btn-investor">أنا مستثمر ←</a>
+      <a href="#waitlist" class="btn-founder">عندي فكرة ←</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-n">100+</span><span class="stat-l">منتظر للإطلاق</span></div>
+    <div class="stat"><span class="stat-n">آمن</span><span class="stat-l">100% موثوق</span></div>
+    <div class="stat"><span class="stat-n">3-5%</span><span class="stat-l">عمولة فقط</span></div>
+  </div>
+</div>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="prob-sol">
+  <div style="text-align:center" class="reveal">
+    <span class="section-tag">المشكلة والحل</span>
+    <h2 class="section-title">لماذا <em>قران؟</em></h2>
+  </div>
+
+  <div class="prob-sol-grid reveal">
+    <div class="prob-card problem">
+      <span class="card-label">المشكلة الحالية</span>
+      <h3>الفجوة بين الأفكار والمال</h3>
+      <ul class="prob-list">
+        <li>أصحاب الأفكار لا يجدون مستثمرين موثوقين</li>
+        <li>المستثمرون لا يجدون أفكاراً مدروسة وموثقة</li>
+        <li>غياب الوسيط الآمن والمحايد</li>
+        <li>خطر الاحتيال والإخلال بالعقود</li>
+        <li>ضياع الأفكار بسبب نقص التمويل</li>
+      </ul>
+    </div>
+
+    <div class="prob-card solution">
+      <span class="card-label">حل قران</span>
+      <h3>وساطة ذكية وآمنة</h3>
+      <ul class="prob-list">
+        <li>منصة محكّمة بمعايير صارمة للقبول</li>
+        <li>عقود رقمية موثقة وملزمة</li>
+        <li>نظام تقييم وتوثيق الهوية</li>
+        <li>ضمان وحماية حقوق الطرفين</li>
+        <li>عمولة فقط عند إتمام الصفقة — 3 إلى 5%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div style="text-align:center" class="reveal">
+    <span class="section-tag">كيف تعمل</span>
+    <h2 class="section-title">عملية <em>بسيطة وواضحة</em></h2>
+  </div>
+
+  <div class="how-grid reveal">
+    <div class="how-side">
+      <h3>🌱 لأصحاب الأفكار</h3>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div class="how-step-text">
+            <h4>سجّل وقدّم فكرتك</h4>
+            <p>أنشئ حسابك وارفع ملف مشروعك مع الدراسة الأولية</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div class="how-step-text">
+            <h4>مراجعة وتحكيم</h4>
+            <p>فريق قران يراجع الفكرة ويقيّمها بمعايير موضوعية</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div class="how-step-text">
+            <h4>نشر والتواصل</h4>
+            <p>تظهر فكرتك للمستثمرين المناسبين لقطاعك</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <div class="how-step-text">
+            <h4>إتمام الصفقة</h4>
+            <p>توقيع العقد وبدء الشراكة بضمان المنصة</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-side">
+      <h3>💰 للمستثمرين</h3>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div class="how-step-text">
+            <h4>سجّل كمستثمر موثّق</h4>
+            <p>أنشئ حسابك وحدد اهتماماتك وميزانية الاستثمار</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div class="how-step-text">
+            <h4>استعرض الأفكار</h4>
+            <p>تصفح الأفكار المراجعة والمصنفة حسب القطاع</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div class="how-step-text">
+            <h4>تواصل وتفاوض</h4>
+            <p>تواصل مباشرة مع أصحاب الأفكار عبر المنصة الآمنة</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <div class="how-step-text">
+            <h4>استثمر بأمان</h4>
+            <p>وقّع العقد الرقمي وتابع استثمارك بشفافية كاملة</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div style="text-align:center" class="reveal">
+    <span class="section-tag">مميزاتنا</span>
+    <h2 class="section-title">لماذا تثق بـ <em>قران؟</em></h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <span class="feature-icon">🔒</span>
+      <h3>عقود رقمية محكمة</h3>
+      <p>كل صفقة تُحفظ بعقد رقمي موثق وملزم قانونياً لحماية حقوق الطرفين.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon">✅</span>
+      <h3>توثيق الهوية</h3>
+      <p>نتحقق من هوية كل مستخدم قبل القبول لضمان بيئة موثوقة وآمنة.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon">⚖️</span>
+      <h3>تحكيم محايد</h3>
+      <p>فريق تحكيم متخصص يراجع الأفكار ويتدخل عند أي نزاع بحياد تام.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon">📊</span>
+      <h3>شفافية كاملة</h3>
+      <p>لوحة تحكم تفصيلية تتابع مراحل الصفقة والتدفق المالي بوضوح تام.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon">🤝</span>
+      <h3>عمولة عادلة</h3>
+      <p>ندفع فقط عند إتمام الصفقة — 3 إلى 5% عمولة وسيط لا أكثر.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-icon">🌐</span>
+      <h3>تواصل مباشر</h3>
+      <p>منصة تواصل داخلية مشفرة ومحمية بين الأطراف دون وسيط خارجي.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <div class="waitlist-box reveal">
+    <span class="section-tag" style="margin:0 auto 16px;display:block;text-align:center;padding:0;">قائمة الانتظار</span>
+    <h2>سجّل الآن<br><em>قبل الإطلاق</em></h2>
+    <p>كن من أوائل المستخدمين وستحصل على مزايا حصرية عند الإطلاق الرسمي.</p>
+
+    <div class="waitlist-form">
+      <div class="form-row">
+        <input class="form-input" type="text" placeholder="الاسم الكامل">
+        <input class="form-input" type="email" placeholder="البريد الإلكتروني">
+      </div>
+      <input class="form-input" type="tel" placeholder="رقم الهاتف / واتساب">
+      <select class="form-select">
+        <option value="" disabled selected>أنا...</option>
+        <option>صاحب فكرة أو مشروع ناشئ</option>
+        <option>مستثمر يبحث عن فرص</option>
+        <option>كلاهما</option>
+      </select>
+      <textarea class="form-input" rows="3" placeholder="اختياري: اختصر فكرتك أو مجال استثمارك..."></textarea>
+      <button class="btn-waitlist">سجّل في قائمة الانتظار ←</button>
+      <p class="form-note">بياناتك آمنة ومحمية — لن نشاركها مع أي طرف ثالث</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Qeran — منصة تحت Zozo Studio</p>
+  <div style="display:flex;gap:24px;">
+    <a href="index.html">الرئيسية</a>
+    <a href="agency.html">وكالة التسويق</a>
+    <a href="prints.html">المطبوعات</a>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80);});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
